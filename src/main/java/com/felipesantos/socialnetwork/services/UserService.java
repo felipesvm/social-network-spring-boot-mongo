@@ -1,12 +1,12 @@
 package com.felipesantos.socialnetwork.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.felipesantos.socialnetwork.domain.User;
+import com.felipesantos.socialnetwork.dto.UserDTO;
 import com.felipesantos.socialnetwork.repository.UserRepository;
 import com.felipesantos.socialnetwork.services.exception.ObjectNotFoundException;
 
@@ -28,6 +28,13 @@ public class UserService {
 		
 		return user;
 	}
-
+	
+	public User insert(User obj) {
+		return repo.insert(obj);
+		
+	}
+	public User fromDTO(UserDTO obj) {
+		return new User(obj.getId(), obj.getName(), obj.getEmail());
+	}
 
 }
